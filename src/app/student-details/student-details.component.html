@@ -1,0 +1,16 @@
+<div class="card" *ngIf="student else noStudent" >
+    <div class="card-body">
+        <div class="form-group">
+            <label for="name">student name:</label>
+            <input type="text" class="form-control" id="name"
+            [value]="student.name">
+        </div>
+        <button class="btn btn-primary" (click)="saveNewStudent()">save</button>
+    </div>
+</div>
+
+<ng-template #noStudent>
+    <div class="card">
+        No student to display
+    </div>
+</ng-template>

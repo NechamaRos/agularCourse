@@ -1,11 +1,21 @@
 <ul class="list-group">
-    <li *ngFor="let student of students" class="list-group-item">
+    <li *ngFor="let student of students" class="list-group-item"
+    [ngClass]="{'active':selectedStudent && student.name===selectedStudent.name}">
         <div class="row">
             <div class="col-1">  {{student.id}}</div>
             <div class="col-2">{{student.name}}</div>
             <div class="col-3">
                 <button (click)="deleteStudent(student)">delete</button>
             </div>
+            <div class="col-3">
+                <button (click)="showDetails(student)">show details</button>
+            </div>
+            
         </div>
     </li>
 </ul>
+<br/>
+
+<button class="btn btn-primary" (click)="addNewStudent()">add student</button>
+
+<student-details *ngIf="selectedStudent" [student]="selectedStudent" (onSaveStudent)="addStudentToList($event)"></student-details>
