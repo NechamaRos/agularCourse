@@ -1,0 +1,28 @@
+<div class="card" *ngIf="student else noStudent">
+    <div class="card-body">
+        <form [formGroup]="studentForm">
+            <div class="form-group">
+                <label for="name">student name:</label>
+                <input type="text" class="form-control" id="name" formControlName="name">
+                <ng-container *ngIf="studentForm.controls['name'].errors">
+                    <div class="alert alert-danger" *ngIf="studentForm.controls['name'].errors['required']">This field
+                        is required!</div>
+                    <div class="alert alert-danger" *ngIf="studentForm.controls['name'].errors['minlength']">This field
+                        is at least 3 chars!</div>
+                </ng-container>
+            </div>
+
+            <div class="mb-3">
+                <label for="yearBook" class="form-label">Student YearBook</label>
+                <input type="text" class="form-control" id="yearBook" formControlName="yearBook">
+            </div>
+            <button class="btn btn-primary" (click)="saveNewStudent()" [disabled]="!studentForm.valid">save</button>
+        </form>
+    </div>
+</div>
+
+<ng-template #noStudent>
+    <div class="card">
+        No student to display
+    </div>
+</ng-template>
