@@ -16,6 +16,7 @@ export class StudentsListComponent {
   constructor(private _studentService:StudentService){
     this.students=this._studentService.getStudents();
     this._studentService.callFunction();
+    
   }
 
   selectedStudent:Student|undefined;
