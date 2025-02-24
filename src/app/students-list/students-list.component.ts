@@ -3,6 +3,7 @@ import { Student } from '../student.model';
 import { CommonModule } from '@angular/common';
 import { StudentDetailsComponent } from '../student-details/student-details.component';
 import { StudentFormComponent } from '../student-form/student-form.component';
+import { StudentService } from '../studentService';
 
 
 @Component({
@@ -11,8 +12,11 @@ import { StudentFormComponent } from '../student-form/student-form.component';
   templateUrl: './students-list.component.html'
 })
 export class StudentsListComponent {
-  students:Student [] =[{ id: 1, name: "1",yearBook:22,active:true,marks:[{subject:"English",grade:100},{subject:"math",grade:99}] },
-  { id: 2, name: "2",yearBook:81,active:true,marks:[{subject:"English",grade:80},{subject:"math",grade:89}] }];
+  students:Student[]=[];
+  constructor(private _studentService:StudentService){
+    this.students=this._studentService.getStudents();
+    this._studentService.callFunction();
+  }
 
   selectedStudent:Student|undefined;
 

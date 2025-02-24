@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { StudentDetailsComponent } from '../student-details/student-details.component';
 import { FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { FormControl } from '@angular/forms';
+import { StudentService } from '../studentService';
 
 @Component({
   selector: 'student-form',
@@ -12,11 +13,10 @@ import { FormControl } from '@angular/forms';
 })
 
 export class StudentFormComponent {
-  constructor(){
-
+  constructor(private _studentService: StudentService) {
+    this.students = this._studentService.getStudents();
   }
-  students: Student[] = [{ id: 1, name: "1", yearBook: 22, active: true, marks: [{ subject: "English", grade: 100 }, { subject: "math", grade: 99 }] },
-                         { id: 2, name: "2", yearBook: 81, active: true, marks: [{ subject: "English", grade: 80 }, { subject: "math", grade: 89 }] }];
+  students: Student[] = [];
 
 studentForm!: FormGroup;
 

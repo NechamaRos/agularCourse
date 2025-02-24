@@ -5,6 +5,7 @@ import { BrowserModule } from "@angular/platform-browser";
 import { StudentDetailsComponent } from "./student-details/student-details.component";
 import { StudentFormComponent } from "./student-form/student-form.component";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { StudentService } from "./studentService";
 
 
 @NgModule({
@@ -14,6 +15,7 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
         FormsModule,
         ReactiveFormsModule],
     imports:[BrowserModule],
+    providers:[StudentService],
     bootstrap:[AppComponent]
 
 })
