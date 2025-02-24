@@ -6,6 +6,7 @@ import { StudentDetailsComponent } from "./student-details/student-details.compo
 import { StudentFormComponent } from "./student-form/student-form.component";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { StudentService } from "./studentService";
+import { ObservableComponent } from "./observable/observable.component";
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { StudentService } from "./studentService";
         StudentDetailsComponent,
         StudentFormComponent,
         FormsModule,
-        ReactiveFormsModule],
+        ReactiveFormsModule,
+        ObservableComponent],
     imports:[BrowserModule],
     providers:[StudentService],
     bootstrap:[AppComponent]
