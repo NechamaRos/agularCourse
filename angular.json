@@ -30,12 +30,7 @@
               "src/styles.css",
               "node_modules/bootstrap/dist/css/bootstrap.css"
             ],
-            "scripts": [],
-            "server": "src/main.server.ts",
-            "outputMode": "server",
-            "ssr": {
-              "entry": "src/server.ts"
-            }
+            "scripts": []
           },
           "configurations": {
             "production": {
@@ -63,6 +58,9 @@
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+             "proxyConfig": "src/proxy.config.json"
+          },
           "configurations": {
             "production": {
               "buildTarget": "my-angular-app:build:production"
@@ -100,6 +98,6 @@
     }
   },
   "cli": {
-    "analytics": "85c943cd-a88c-4009-a9c8-f7aa1f75ddc9"
-  }
+    "analytics": false
+}
 }

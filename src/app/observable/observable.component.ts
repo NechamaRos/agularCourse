@@ -19,7 +19,7 @@ export class ObservableComponent {
   })
     x!:number;
   constructor(){
-    this.sorce.pipe(map(x=>{return x*3}))
+    this.sorce.pipe(map(x=>{return x*3;}))
     .subscribe(value=>{
       this.x=value;
       console.log(value);

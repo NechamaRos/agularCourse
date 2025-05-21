@@ -12,10 +12,13 @@ import { StudentService } from '../studentService';
   templateUrl: './students-list.component.html'
 })
 export class StudentsListComponent {
+
   students:Student[]=[];
+  
   constructor(private _studentService:StudentService){
-    this.students=this._studentService.getStudents();
-    this._studentService.callFunction();
+    this._studentService.getStudentFromServer().subscribe(data=>{
+      this.students=data;
+    })
   }
 
   selectedStudent:Student|undefined;
@@ -44,4 +47,20 @@ export class StudentsListComponent {
   addNewStudent(){
     this.selectedStudent=new Student("new student",37)
   }
+
+  showActiveStudents(isActive:boolean){
+    this._studentService.getActiveStudentsFromService(isActive).subscribe(data =>{
+       this.students=data;
+    },err =>{
+       alert(err)
+    })
+ }
+ saveStudentsToServer(){
+    this._studentService.saveStudents(this.students).subscribe(data=>{
+       if(data)
+          alert("save success")
+    },err=>{
+       alert(err)
+    })
+ }
 }

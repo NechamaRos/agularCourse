@@ -7,20 +7,27 @@ import { StudentFormComponent } from "./student-form/student-form.component";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { StudentService } from "./studentService";
 import { ObservableComponent } from "./observable/observable.component";
+import { provideHttpClient } from "@angular/common/http";
+import { StudentsListComponent } from "./students-list/students-list.component";
 
 
 @NgModule({
-    declarations:[AppComponent,/*StudentsListComponent,*/
+    declarations: [AppComponent,
+        StudentsListComponent,
         StudentDetailsComponent,
         StudentFormComponent,
+        ObservableComponent
+    ],
+    imports: [BrowserModule,
         FormsModule,
-        ReactiveFormsModule,
-        ObservableComponent],
-    imports:[BrowserModule],
-    providers:[StudentService],
-    bootstrap:[AppComponent]
+        ReactiveFormsModule
+    ],
+    providers: [StudentService,
+        provideHttpClient()
+    ],
+    bootstrap: [AppComponent]
 
 })
-export class AppModule{
+export class AppModule {
 
 }
