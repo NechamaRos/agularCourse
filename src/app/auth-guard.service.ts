@@ -16,7 +16,7 @@ export class AuthGuardService implements CanActivate {
   }
 
   canActivate(): boolean {
-    if(this.students&&this.students.length > 0) {
+    if(this.students && this.students.length > 0) {
     return true;
   }
   else{
