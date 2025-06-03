@@ -1,0 +1,6 @@
+<p>year-book works!</p>
+
+<ul *ngIf="students && students.length">
+  <li *ngFor="let student of students">
+    <a (click)="goToYearBook(student.yearBook)">{{student.name}}</a>
+  </li>

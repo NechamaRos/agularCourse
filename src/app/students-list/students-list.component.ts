@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Student } from '../student.model';
 import { CommonModule } from '@angular/common';
 import { StudentDetailsComponent } from '../student-details/student-details.component';
 import { StudentFormComponent } from '../student-form/student-form.component';
 import { StudentService } from '../studentService';
+import { ActivatedRoute, Router } from '@angular/router';
 
 
 @Component({
@@ -11,14 +12,28 @@ import { StudentService } from '../studentService';
   imports: [CommonModule,StudentFormComponent],
   templateUrl: './students-list.component.html'
 })
-export class StudentsListComponent {
+export class StudentsListComponent implements OnInit {
 
   students:Student[]=[];
-  
-  constructor(private _studentService:StudentService){
-    this._studentService.getStudentFromServer().subscribe(data=>{
+  yearBook:number=0;
+  ngOnInit(): void {
+    this.acr.paramMap.subscribe(paramMap => {
+     if(paramMap.has('yearBook')) {
+        this.yearBook = +paramMap.get('yearBook')!;
+      }
+    });
+
+   this._studentService.getStudentFromServer().subscribe(data=>{
+    if(this.yearBook > 0) {
+      this.students = data.filter(student => student.yearBook === this.yearBook);
+    }
+    else {
       this.students=data;
-    })
+    }
+    })  
+  }
+  
+  constructor(private _studentService:StudentService,private router: Router,private acr:ActivatedRoute){
   }
 
   selectedStudent:Student|undefined;
