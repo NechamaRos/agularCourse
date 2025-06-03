@@ -13,6 +13,7 @@ export const appRoutes: Routes = [
     {path:"students/:yearBook",component: StudentsListComponent},
     {path:"home", component: HomeComponent},
     {path:"yearBook", component: YearBookComponent,canActivate: [AuthGuardService]},
+     {path:"admin", loadChildren: () => import("./admin/admin.module").then(m => m.AdminModule)},
     {path:"**",component: PageNotFoundComponent}
 ]
 
