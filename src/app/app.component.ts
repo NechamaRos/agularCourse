@@ -1,8 +1,8 @@
 import { Component } from "@angular/core";
 import { core } from "@angular/compiler";
-import { StudentsListComponent } from "./students-list/students-list.component";
-import { ObservableComponent } from "./observable/observable.component";
-import { ParentLifeComponent } from "./life-cycle-demo/parent-life/parent-life.component";
+import { StudentsListComponent } from "./modules/students/students-list/students-list.component";
+import { ObservableComponent } from "./modules/demo/observable/observable.component";
+import { ParentLifeComponent } from "./modules/demo/life-cycle-demo/parent-life/parent-life.component";
 import { RouterLink, RouterOutlet } from "@angular/router";
 import { appRoutingModule } from "./routing.module";
 

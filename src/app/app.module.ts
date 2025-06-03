@@ -1,17 +1,19 @@
 import { NgModule } from "@angular/core";
 import { AppComponent } from "./app.component";
 import { BrowserModule } from "@angular/platform-browser";
-import { StudentDetailsComponent } from "./student-details/student-details.component";
-import { StudentFormComponent } from "./student-form/student-form.component";
+import { StudentDetailsComponent } from "./modules/students/student-details/student-details.component";
+import { StudentFormComponent } from "./modules/students/student-form/student-form.component";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { StudentService } from "./studentService";
-import { ObservableComponent } from "./observable/observable.component";
+import { StudentService } from "./modules/students/studentService";
+import { ObservableComponent } from "./modules/demo/observable/observable.component";
 import { provideHttpClient } from "@angular/common/http";
-import { StudentsListComponent } from "./students-list/students-list.component";
-import { ParentLifeComponent } from "./life-cycle-demo/parent-life/parent-life.component";
-import { ChildLifeComponent } from "./life-cycle-demo/child-life/child-life.component";
+import { StudentsListComponent } from "./modules/students/students-list/students-list.component";
+import { ParentLifeComponent } from "./modules/demo/life-cycle-demo/parent-life/parent-life.component";
+import { ChildLifeComponent } from "./modules/demo/life-cycle-demo/child-life/child-life.component";
 import { appRoutingModule } from "./routing.module";
 import { YearBookComponent } from "./year-book/year-book.component";
+import { DirectiveDemoComponent } from "./modules/demo/directive-demo/directive-demo.component";
+import { DirectionDirective } from "./modules/demo/direction.directive";
 
 const routes = [{
 
@@ -19,19 +21,14 @@ const routes = [{
 
 @NgModule({
     declarations: [AppComponent,
-        StudentsListComponent,
-        StudentDetailsComponent,
-        StudentFormComponent,
         ObservableComponent,
-        ParentLifeComponent,
-        ChildLifeComponent,
         YearBookComponent
     ],
     imports: [BrowserModule,
         FormsModule,
         ReactiveFormsModule,
-        appRoutingModule
-          
+        appRoutingModule,
+        
   ],
     providers: [StudentService,
         provideHttpClient()

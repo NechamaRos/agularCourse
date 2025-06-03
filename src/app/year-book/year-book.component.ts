@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Student } from '../student.model';
-import { StudentService } from '../studentService';
+import { Student } from '../modules/students/student.model';
+import { StudentService } from '../modules/students/studentService';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
